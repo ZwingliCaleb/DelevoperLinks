@@ -3,7 +3,7 @@ import ProfileCard from '../components/ProfileCard';
 
 const preview = () => {
   return (
-    <div>
+    <div className= "items-center justify-center">
       <ProfileCard/>
     </div>
   )
