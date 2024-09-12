@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
+//import Image from 'next/image';
 
 const ProfileCard = () => {
   return (
     <div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 w-96 shadow-xl border">
             <div className="avatar items-center justify-center">
                 <div className="mask mask-squircle w-24 shadow-2xl items-center">
                     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
