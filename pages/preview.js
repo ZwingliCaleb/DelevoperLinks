@@ -3,20 +3,26 @@ import ProfileCard from '../components/ProfileCard';
 
 const preview = () => {
   return (
-    <div>
-      <section>
-        <div className="border m-6 h-12 bg-white rounded-md">
-          <div className="items-center flex">
-            <div className="items-start"><button>Back to Editor</button></div>
-            <div className="items-end"><button>Share Link</button></div>
+    <div className="h-screen">
+      <section className="h-80 border bg-blue-800 rounded-b-2xl">
+        <div className="border m-6 h-16 bg-white rounded-md">
+          <div className="flex justify-between items-center py-3 px-4">
+            <button className="text-white bg-black px-4 py-2 rounded-md">
+              Back to Editor
+            </button>
+            <button className="bg-black text-white px-4 py-2 rounded-md">
+              Share Link
+            </button>
           </div>
         </div>
       </section>
-      <div className= "flex items-center justify-center h-screen relative">
-        <ProfileCard/>
+
+      {/* Adjusted ProfileCard placement */}
+      <div className="flex items-center justify-center -mt-32">
+        <ProfileCard />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default preview
+export default preview;
