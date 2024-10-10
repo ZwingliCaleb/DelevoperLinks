@@ -17,7 +17,7 @@ const Home = () => {
       {/* Darker Header */}
       <header className="bg-gray-900 text-white text-center py-4">
         <nav className="flex justify-center space-x-8">
-          <Link href="/customize">
+          <Link href="/">
             <button className="font-semibold border border-gray-300 bg-slate-600 px-4 py-2 rounded">Links</button>
           </Link>
           <Link href="/profile">
@@ -28,8 +28,8 @@ const Home = () => {
       </header>
 
       <div className="flex h-[calc(100%-96px)] overflow-hidden">
-        {/* Phone avatar section */}
-        <section className="w-2/5 flex justify-center items-center bg-gray-100">
+        {/* Phone avatar section (hidden on small screens) */}
+        <section className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100">
           <div className="mockup-phone">
             <div className="camera"></div>
             <div className="display">
@@ -39,13 +39,9 @@ const Home = () => {
         </section>
 
         {/* Customize links section */}
-        <section className="w-3/5 flex flex-col justify-between px-8 bg-white">
+        <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
           {/* Add New Link Button at the top */}
           <div className="mt-4">
-            <div className="mb-4">
-              <h2 className="mb-2 text-lg font-bold">Customize your links</h2>
-              <p className="text-sm font-semibold">Add/Edit/Remove links below and then share all your profiles with the world!</p>
-            </div>  
             <button onClick={addLink} className="bg-slate-600 text-white px-4 py-2 rounded border border-gray-300 w-full">
               + Add new link
             </button>
@@ -53,6 +49,8 @@ const Home = () => {
 
           {/* Links Section with Scroll */}
           <div className="overflow-y-auto flex-grow mt-4 pr-4">
+            <h2 className="mb-2 text-lg font-bold">Customize your links</h2>
+            <p className="text-sm font-semibold">Add/Edit/Remove links below and then share all your profiles with the world!</p>
 
             {/* Map through the links */}
             {links.map((link, index) => (
