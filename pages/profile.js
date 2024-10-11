@@ -3,19 +3,10 @@ import { useDropzone } from 'react-dropzone';
 import Link from 'next/link';
 
 const Home = () => {
-  const [links, setLinks] = useState([{ id: 1, platform: '', url: '' }]);
   const [profilePicture, setProfilePicture] = useState(null);
   const [firstname, setFirstName] = useState('');
   const [secondname, setSecondName] = useState('');
   const [email, setEmail] = useState('');
-
-  const addLink = () => {
-    setLinks([...links, { id: links.length + 1, platform: '', url: '' }]);
-  };
-
-  const removeLink = (id) => {
-    setLinks(links.filter((link) => link.id !== id));
-  };
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -37,12 +28,14 @@ const Home = () => {
       <header className="bg-gray-900 text-white text-center py-4">
         <nav className="flex justify-center space-x-8">
           <Link href="/">
-            <button className="font-semibold border border-gray-300 bg-slate-600 px-4 py-2 rounded">Links</button>
+            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
           </Link>
           <Link href="/profile">
-            <button className="font-semibold border border-gray-300 bg-slate-600 px-4 py-2 rounded">Profile Details</button>
+            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
           </Link>
-          <button className="h-8 w-24 ml-auto rounded bg-slate-600">Preview</button>
+          <Link href="/preview">
+            <button className="h-10 w-24 ml-auto rounded border bg-gray-900">Preview</button>
+          </Link>
         </nav>
       </header>
 

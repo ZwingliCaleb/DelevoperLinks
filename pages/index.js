@@ -18,12 +18,14 @@ const Home = () => {
       <header className="bg-gray-900 text-white text-center py-4">
         <nav className="flex justify-center space-x-8">
           <Link href="/">
-            <button className="font-semibold border border-gray-300 bg-slate-600 px-4 py-2 rounded">Links</button>
+            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
           </Link>
           <Link href="/profile">
-            <button className="font-semibold border border-gray-300 bg-slate-600 px-4 py-2 rounded">Profile Details</button>
+            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
           </Link>
-          <button className="h-8 w-24 ml-auto rounded bg-slate-600">Preview</button>
+          <Link href="/preview">
+            <button className="h-10 w-24 ml-auto rounded bg-gray-900 border">Preview</button>
+           </Link> 
         </nav>
       </header>
 
@@ -42,22 +44,21 @@ const Home = () => {
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
           {/* Add New Link Button at the top */}
           <div className="mt-4">
-            <button onClick={addLink} className="bg-slate-600 text-white px-4 py-2 rounded border border-gray-300 w-full">
+            <h2 className="mb-2 text-lg text-slate-700 font-bold">Customize your links</h2>
+            <p className="text-sm font-semibold text-slate-500 mb-4">Add/Edit/Remove links below and then share all your profiles with the world!</p>
+            <button onClick={addLink} className="bg-slate-600 shadow-xl text-white px-4 py-2 rounded border border-gray-300 w-full">
               + Add new link
             </button>
           </div>
 
           {/* Links Section with Scroll */}
           <div className="overflow-y-auto flex-grow mt-4 pr-4">
-            <h2 className="mb-2 text-lg font-bold">Customize your links</h2>
-            <p className="text-sm font-semibold">Add/Edit/Remove links below and then share all your profiles with the world!</p>
-
             {/* Map through the links */}
             {links.map((link, index) => (
               <div key={link.id} className="mt-4 border-b pb-4">
                 {/* Link number and remove button on the same row */}
                 <div className="flex items-center justify-between">
-                  <p className="font-semibold">Link #{index + 1}</p>
+                  <p className="font-semibold text-slate-600">Link #{index + 1}</p>
                   <button onClick={() => removeLink(link.id)} className="bg-red-500 text-white px-4 py-2 rounded border">
                     Remove
                   </button>
