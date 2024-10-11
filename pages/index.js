@@ -15,17 +15,21 @@ const Home = () => {
   return (
     <div className="h-screen overflow-hidden">
       {/* Darker Header */}
-      <header className="bg-gray-900 text-white text-center py-4">
-        <nav className="flex justify-center space-x-8">
-          <Link href="/">
-            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
-          </Link>
-          <Link href="/profile">
-            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
-          </Link>
+      <header className="bg-gray-900 text-white py-4">
+        <nav className="flex justify-between items-center px-8">
+          {/* Centered Buttons */}
+          <div className="flex justify-center flex-grow space-x-8">
+            <Link href="/">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
+            </Link>
+            <Link href="/profile">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
+            </Link>
+          </div>
+          {/* Right Aligned Preview Button */}
           <Link href="/preview">
-            <button className="h-10 w-24 ml-auto rounded bg-gray-900 border">Preview</button>
-           </Link> 
+            <button className="h-10 w-24 rounded bg-gray-900 border">Preview</button>
+          </Link>
         </nav>
       </header>
 
@@ -71,7 +75,7 @@ const Home = () => {
                     <option>GitHub</option>
                     <option>LinkedIn</option>
                     <option>Reddit</option>
-                    <option>Twitter</option>
+                    <option>Twitter/ X</option>
                     <option>YouTube</option>
                   </select>
                   <input type="text" placeholder="Enter link" className="input input-bordered w-full" />

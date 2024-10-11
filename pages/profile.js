@@ -25,16 +25,20 @@ const Home = () => {
   return (
     <div className="h-screen overflow-hidden">
       {/* Darker Header */}
-      <header className="bg-gray-900 text-white text-center py-4">
-        <nav className="flex justify-center space-x-8">
-          <Link href="/">
-            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
-          </Link>
-          <Link href="/profile">
-            <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
-          </Link>
+      <header className="bg-gray-900 text-white py-4">
+        <nav className="flex justify-between items-center px-8">
+          {/* Centered Buttons */}
+          <div className="flex justify-center flex-grow space-x-8">
+            <Link href="/">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
+            </Link>
+            <Link href="/profile">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
+            </Link>
+          </div>
+          {/* Right Aligned Preview Button */}
           <Link href="/preview">
-            <button className="h-10 w-24 ml-auto rounded border bg-gray-900">Preview</button>
+            <button className="h-10 w-24 rounded bg-gray-900 border">Preview</button>
           </Link>
         </nav>
       </header>
@@ -51,13 +55,13 @@ const Home = () => {
         </section>
 
         {/* Customize links section */}
-        <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
+        <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white ">
           <div className="m-12 h-full">
             <h1 className="text-xl text-slate-600 font-bold">Profile Details</h1>
             <p className="text-sm text-slate-700 mt-1 mb-2">Add your details to create a personal touch to your profile</p>
           </div>
 
-          <div className="flex flex-col items-center mb-48">
+          <div className="flex flex-col items-center rounded-lg shadow-xl pb-32 mb-48">
             {/* Profile Picture Upload */}
             <div {...getRootProps({ className: 'dropzone border-2 border-dashed border-gray-400 w-32 h-32 flex items-center justify-center rounded-full transition-colors duration-300 hover:bg-gray-200' })}>
               <input {...getInputProps()} />
