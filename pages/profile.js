@@ -5,7 +5,8 @@ import Link from 'next/link';
 const Home = () => {
   const [links, setLinks] = useState([{ id: 1, platform: '', url: '' }]);
   const [profilePicture, setProfilePicture] = useState(null);
-  const [name, setName] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [secondname, setSecondName] = useState('');
   const [email, setEmail] = useState('');
 
   const addLink = () => {
@@ -63,7 +64,7 @@ const Home = () => {
             <p className="text-sm text-slate-700 mt-1 mb-2">Add your details to create a personal touch to your profile</p>
           </div>
 
-          <div className="flex flex-col items-center mt-4">
+          <div className="flex flex-col items-center mb-48">
             {/* Profile Picture Upload */}
             <div {...getRootProps({ className: 'dropzone border-2 border-dashed border-gray-400 w-32 h-32 flex items-center justify-center rounded-full transition-colors duration-300 hover:bg-gray-200' })}>
               <input {...getInputProps()} />
@@ -78,8 +79,8 @@ const Home = () => {
             <input
               type="text"
               placeholder="First name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={firstname}
+              onChange={(e) => setFirstName(e.target.value)}
               className="mt-4 p-2 border border-gray-300 rounded w-full max-w-xs"
             />
 
@@ -87,8 +88,8 @@ const Home = () => {
             <input
               type="text"
               placeholder="Second name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={secondname}
+              onChange={(e) => setSecondName(e.target.value)}
               className="mt-4 p-2 border border-gray-300 rounded w-full max-w-xs"
             />
 
