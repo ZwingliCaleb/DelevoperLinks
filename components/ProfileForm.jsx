@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileForm = ({firstname, secondname, email, setFirstName, setSecondName, setEmail}) => {
   return (
-    <div className="flex flex-col items-center rounded-lg shadow-xl pb-32 mb-48">
+    <div className="items-center ml-36">
       {/* First name Input */}
       <input
         type="text"

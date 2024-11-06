@@ -43,17 +43,29 @@ const Profile = () => {
           </div>
 
           {/* Profile Form */}
-          <ProfileForm 
-            firstname={firstname} 
-            secondname={secondname} 
-            email={email}
-            setFirstName={setFirstName} 
-            setSecondName={setSecondName} 
-            setEmail={setEmail} 
-          />
+          <div className="flex flex-col items-center rounded-lg shadow-xl pb-32 mb-48">
 
-          {/* Profile Picture Upload */}
-          <AvatarUpload onImageUpload={setProfilePicture} />
+            {/* Profile Picture Upload */}
+          <div className="flex flex-col items-center">
+            <AvatarUpload onImageUpload={setProfilePicture} />
+            {profilePicture && (
+              <img
+                src={profilePicture}
+                alt="Profile Picture"
+                className="mt-4 w-32 h-32 rounded-lg mt-4"
+              />
+            )}
+          </div>
+
+            <ProfileForm 
+              firstname={firstname} 
+              secondname={secondname} 
+              email={email}
+              setFirstName={setFirstName} 
+              setSecondName={setSecondName} 
+              setEmail={setEmail} 
+            />
+          </div>
         </section>
       </div>
 
