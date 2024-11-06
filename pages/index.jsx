@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import PhoneAvatar from '@/components/PhoneAvatar';
 
 const Home = () => {
   const [links, setLinks] = useState([{ id: 1, platform: '', url: '' }]);
@@ -35,15 +36,8 @@ const Home = () => {
 
       <div className="flex h-[calc(100%-96px)] overflow-hidden">
         {/* Phone avatar section (hidden on small screens) */}
-        <section className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100">
-          <div className="mockup-phone">
-            <div className="camera"></div>
-            <div className="display">
-              <div className="artboard artboard-demo phone-1">Hi Zwingli.</div>
-            </div>
-          </div>
-        </section>
-
+        <PhoneAvatar className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100"/>
+          
         {/* Customize links section */}
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
           {/* Add New Link Button at the top */}

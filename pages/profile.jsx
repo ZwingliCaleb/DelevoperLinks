@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import AvatarUpload from '../components/AvatarUpload';
+import PhoneAvatar from '../components/PhoneAvatar';
+import ProfileForm from '../components/ProfileForm';
 
 const Profile = () => {
   const [firstname, setFirstName] = useState('');
@@ -30,21 +32,8 @@ const Profile = () => {
       </header>
 
       <div className="flex h-[calc(100%-96px)] overflow-hidden">
-        {/* Phone avatar section (hidden on small screens) */}
-        <section className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100">
-          <div className="mockup-phone">
-            <div className="camera"></div>
-            <div className="display">
-              <div className="artboard artboard-demo phone-1">
-                {profilePicture ? (
-                  <img src={profilePicture} alt="Profile" className="w-full h-full object-cover rounded-lg" />
-                ) : (
-                  <p className="text-gray-600 text-sm text-center">Hi Zwingli.</p>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Phone avatar section */}
+        <PhoneAvatar profilePicture={profilePicture} />
 
         {/* Customize links section */}
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
@@ -53,37 +42,18 @@ const Profile = () => {
             <p className="text-sm text-slate-700 mt-1 mb-2">Add your details to create a personal touch to your profile</p>
           </div>
 
-          <div className="flex flex-col items-center rounded-lg shadow-xl pb-32 mb-48">
-            {/* Profile Picture Upload */}
-            <AvatarUpload onImageUpload={setProfilePicture} />
+          {/* Profile Form */}
+          <ProfileForm 
+            firstname={firstname} 
+            secondname={secondname} 
+            email={email}
+            setFirstName={setFirstName} 
+            setSecondName={setSecondName} 
+            setEmail={setEmail} 
+          />
 
-            {/* First name Input */}
-            <input
-              type="text"
-              placeholder="First name"
-              value={firstname}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="mt-4 p-2 border border-gray-300 rounded w-full max-w-xs"
-            />
-
-            {/* Second name Input */}
-            <input
-              type="text"
-              placeholder="Second name"
-              value={secondname}
-              onChange={(e) => setSecondName(e.target.value)}
-              className="mt-4 p-2 border border-gray-300 rounded w-full max-w-xs"
-            />
-
-            {/* Email Input */}
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-4 p-2 border border-gray-300 rounded w-full max-w-xs"
-            />
-          </div>
+          {/* Profile Picture Upload */}
+          <AvatarUpload onImageUpload={setProfilePicture} />
         </section>
       </div>
 
