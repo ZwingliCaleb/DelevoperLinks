@@ -17,7 +17,7 @@ const AvatarUpload = ({ onImageUpload }) => {
   return (
     <div 
       {...getRootProps({ 
-        className: 'dropzone bg-gray-200 w-32 h-32 flex items-center justify-center rounded-lg cursor-pointer' 
+        className: 'dropzone bg-gray-200 w-32 h-32 flex items-center justify-center rounded-full cursor-pointer' 
       })}
     >
       <input {...getInputProps()} />
