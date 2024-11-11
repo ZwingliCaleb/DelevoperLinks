@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const AvatarUpload = ({ onImageUpload }) => {
-  const onDrop = (acceptedFiles) => {
+  const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file) {
       onImageUpload(URL.createObjectURL(file)); // Pass the selected image URL to the parent
     }
-  };
+  }, [onImageUpload]);
 
-  const { getRootProps, getInputProps } = useDropzone({ 
+  const { getRootProps, getInputProps, isDragActive, } = useDropzone({ 
     onDrop,
-    accept: {
-      'image/*': [] // Accept any image format
-    }
+    accept: {'image/*': []} // Accept any image format
   });
 
   return (
@@ -23,7 +21,11 @@ const AvatarUpload = ({ onImageUpload }) => {
       })}
     >
       <input {...getInputProps()} />
-      <p className="text-gray-600 text-sm text-center">Click or drag image</p>
+      {isDragActive ? (
+        <p className="text-gray-600 text-sm text-center">Click or drag image</p>
+      ) : (
+        <p className="text-gray-600 text-sm text-center">Drop your image here, or click to select</p>
+      )}
     </div>
   );
 };
