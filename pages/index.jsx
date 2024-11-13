@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import PhoneAvatar from "../components/PhoneAvatar";
-import ProfileForm from "../components/ProfileForm"; // Assuming you are using this component for managing profile data
+import React, { useState } from 'react';
+import Link from 'next/link';
+import PhoneAvatar from '@/components/PhoneAvatar';
 
-const Index = () => {
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [firstname, setFirstName] = useState("");
-  const [secondname, setSecondName] = useState("");
-  const [email, setEmail] = useState("");
-  const [links, setLinks] = useState([]);
+const Home = () => {
+  const [links, setLinks] = useState([{ id: 1, platform: '', url: '' }]);
+
+  const addLink = () => {
+    setLinks([...links, { id: links.length + 1, platform: '', url: '' }]);
+  };
+
+  const removeLink = (id) => {
+    setLinks(links.filter((link) => link.id !== id));
+  };
 
   return (
     <div className="h-screen overflow-hidden">
@@ -17,69 +20,72 @@ const Index = () => {
         <nav className="flex justify-between items-center px-8">
           {/* Centered Buttons */}
           <div className="flex justify-center flex-grow space-x-8">
-            <Link href="/profile">
-              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">
-                Profile
-              </button>
+            <Link href="/">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Links</button>
             </Link>
-            <Link href="/links">
-              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">
-                Customize Links
-              </button>
+            <Link href="/profile">
+              <button className="font-semibold bg-slate-600 px-4 py-2 rounded">Profile Details</button>
             </Link>
           </div>
           {/* Right Aligned Preview Button */}
           <Link href="/preview">
-            <button className="h-10 w-24 rounded bg-gray-900 border">
-              Preview
-            </button>
+            <button className="h-10 w-24 rounded bg-gray-900 border">Preview</button>
           </Link>
         </nav>
       </header>
 
       <div className="flex h-[calc(100%-96px)] overflow-hidden">
-        {/* Phone avatar section, only displayed on large screens */}
-        <div className="hidden lg:flex lg:w-2/5 justify-center items-center bg-gray-100">
-          <PhoneAvatar
-            profilePicture={profilePicture}
-            firstname={firstname}
-            secondname={secondname}
-            email={email}
-            links={links}
-          />
-        </div>
-
-        {/* Profile Form section */}
+        {/* Phone avatar section (hidden on small screens) */}
+        <PhoneAvatar className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100"/>
+          
+        {/* Customize links section */}
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
-          <div className="m-12 h-full">
-            <h1 className="text-xl text-slate-600 font-bold">Profile Details</h1>
-            <p className="text-sm text-slate-700 mt-1 mb-2">
-              Add your details to personalize your profile.
-            </p>
+          {/* Add New Link Button at the top */}
+          <div className="mt-4">
+            <h2 className="mb-2 text-lg text-slate-700 font-bold">Customize your links</h2>
+            <p className="text-sm font-semibold text-slate-500 mb-4">Add/Edit/Remove links below and then share all your profiles with the world!</p>
+            <button onClick={addLink} className="bg-slate-600 shadow-xl text-white px-4 py-2 rounded border border-gray-300 w-full">
+              + Add new link
+            </button>
           </div>
 
-          {/* Profile Form */}
-          <div className="flex flex-col items-center rounded-lg shadow-xl pb-32 mb-48">
-            <ProfileForm
-              firstname={firstname}
-              secondname={secondname}
-              email={email}
-              setFirstName={setFirstName}
-              setSecondName={setSecondName}
-              setEmail={setEmail}
-            />
+          {/* Links Section with Scroll */}
+          <div className="overflow-y-auto flex-grow mt-4 pr-4">
+            {/* Map through the links */}
+            {links.map((link, index) => (
+              <div key={link.id} className="mt-4 border-b pb-4">
+                {/* Link number and remove button on the same row */}
+                <div className="flex items-center justify-between">
+                  <p className="font-semibold text-slate-600">Link #{index + 1}</p>
+                  <button onClick={() => removeLink(link.id)} className="bg-red-500 text-white px-4 py-2 rounded border">
+                    Remove
+                  </button>
+                </div>
+
+                {/* Link input and platform selection underneath */}
+                <div className="mt-2">
+                  <select className="select select-bordered w-full mb-2">
+                    <option disabled selected>Choose platform</option>
+                    <option>GitHub</option>
+                    <option>LinkedIn</option>
+                    <option>Reddit</option>
+                    <option>Twitter/ X</option>
+                    <option>YouTube</option>
+                  </select>
+                  <input type="text" placeholder="Enter link" className="input input-bordered w-full" />
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </div>
 
       {/* Save button positioned bottom-right */}
       <div className="fixed bottom-8 right-8">
-        <button className="bg-slate-600 text-white px-6 py-2 rounded">
-          Save
-        </button>
+        <button className="bg-slate-600 text-white px-6 py-2 rounded">Save</button>
       </div>
     </div>
   );
 };
 
-export default Index;
+export default Home;
