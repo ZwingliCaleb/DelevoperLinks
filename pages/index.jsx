@@ -36,8 +36,9 @@ const Home = () => {
 
       <div className="flex h-[calc(100%-96px)] overflow-hidden">
         {/* Phone avatar section (hidden on small screens) */}
-        <PhoneAvatar className="w-2/5 hidden lg:flex justify-center items-center bg-gray-100"/>
-          
+        <div className="lg:w-2/5 hidden lg:flex justify-center items-center bg-gray-100">
+          <PhoneAvatar/>
+        </div>  
         {/* Customize links section */}
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
           {/* Add New Link Button at the top */}
