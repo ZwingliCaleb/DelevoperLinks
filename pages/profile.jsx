@@ -11,6 +11,32 @@ const Profile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
   const [links, setLinks] = useState([]);
 
+  // Function that handles profile submission to the backend
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname: firstname,
+          lastname: secondname, // Ensure this matches your backend (lastName)
+          email: email,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Profile saved successfully!");
+      } else {
+        alert("Failed to save profile");
+      }
+    } catch (error) {
+      console.error("Error saving profile:", error);
+    }
+  };
+
   return (
     <div className="h-screen overflow-hidden">
       {/* Darker Header */}
@@ -53,7 +79,9 @@ const Profile = () => {
         {/* Customize links section */}
         <section className="w-full lg:w-3/5 flex flex-col justify-between px-8 bg-white">
           <div className="m-12 mb-6 h-full">
-            <h1 className="text-xl text-slate-600 font-bold">Profile Details</h1>
+            <h1 className="text-xl text-slate-600 font-bold">
+              Profile Details
+            </h1>
             <p className="text-sm text-slate-700 mt-1 mb-2">
               Add your details to create a personal touch to your profile
             </p>
@@ -78,7 +106,9 @@ const Profile = () => {
                     onClick={() => setProfilePicture(null)}
                     className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300 cursor-pointer"
                   >
-                    <span className="text-white font-semibold">Change Image</span>
+                    <span className="text-white font-semibold">
+                      Change Image
+                    </span>
                   </div>
                 </div>
               )}
@@ -98,7 +128,10 @@ const Profile = () => {
 
       {/* Save button positioned bottom-right */}
       <div className="fixed bottom-8 right-8">
-        <button className="bg-slate-600 text-white px-6 py-2 rounded">
+        <button
+          className="bg-slate-600 text-white px-6 py-2 rounded"
+          onClick={handleSubmit} // Submit onclick
+        >
           Save
         </button>
       </div>

@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     await newUser.save();
     res.status(201).json(newUser);
   } catch (err) {
-    res.status(500).json({ message: 'Error creating user', error: err });
+    res.status(500).json({ message: 'Error creating user', error: err.message });
   }
 });
 
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     const users = await User.find(); // This will fetch all users from the 'users' collection
     res.status(200).json(users);
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching users', error: err });
+    res.status(500).json({ message: 'Error fetching users', error: err.message });
   }
 });
 
